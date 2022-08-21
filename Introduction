@@ -1,0 +1,43 @@
+//Three Steps
+Creating Client
+Preparing Request
+Executing Request and Reading Response
+
+
+    WebClientAPI() {
+    	
+    	/*1*/
+    	//1Creating WebClient Instance
+    	//Two ways of creating a web client
+    	//All the settings you configure here are fixed/immutable
+    	
+        //this.webClient = WebClient.create("http://localhost:8080/products");
+        this.webClient =WebClient.builder()
+                .baseUrl("http://localhost:8080/products")
+                .build();
+        //we can use mutate method to create another builder with same properties
+        /*WebClient newWebClient9081 =  webClient.mutate().baseUrl("https://localhost:9081/employees").build();
+         * */
+      //on the WebClient
+        
+        /*2*/
+        //2 Preparing request
+        	/*2.1: invoke the http verb methods like get/put 
+        	 *     which will return the RequestHeaderUriSpec, RequestBodyUriSpec
+        	 *     using these we can set the url and accept header(get) content type header(put/post)   
+        	 * 		we can use a method syncBody if we are not working mono and flux body		
+        	 * */
+        //3 Executing Request and Reading response
+	        /* 3.1 retrieve()
+	         *      It returns the ResponseSpec		
+	         * 		we can transform the response to mono of certain type or void
+	         * 		we can transform the response to flux of certain type
+	         * 		we register a callback function to execute  when a status is returned using the onStatus
+	         * 			
+	         * 3.2 exchange()
+	         * 		it returns a Mono<ClientResponse>
+	         * 		we have to faltMap on the result obtained from it to convert it 
+	         * 		to Flux,Mono, Mono<ResponseEntity>,Mono<List<ResponseEntity>>
+	         * */
+        
+    }
